@@ -1,0 +1,41 @@
+
+.order{
+    padding: 200px 0;
+}
+
+.widget__head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widget__content .item {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.widget__content .item {
+    border: 1px solid #000;
+}
+.order_count{
+    margin: 0 20px;
+}
+
+.product_wrap{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.product_card{
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+    border:1px solid #000;
+}
+
+.product_card img{
+    width: 100%;
+}
