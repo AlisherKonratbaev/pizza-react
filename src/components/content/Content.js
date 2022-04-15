@@ -7,10 +7,10 @@ function Content() {
     return (
         <div className='col-md-8'>
             <div className='product_wrap'>
-                {orders.map(item =>{
+                {orders.map((item,index) =>{
                     if(item.count > 0) {
                         return (
-                            <div className='product_card'>
+                            <div key={index} className='product_card'>
                                 <img src={item.photo}/>
                             </div>      
                         )
