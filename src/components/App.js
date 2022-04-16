@@ -19,14 +19,14 @@ function App() {
     initOrders[0].count = 1;
 
     const [orders, setOrders] = useState([...initOrders]);
-    const [idOrders, setIdOrders] = useState([]);
+    const [savedOrders, setSavedOrders] = useState([]);
 
     return (
         <BrowserRouter>
             <section className='order'>
                 <div className='container'>
                     <div className='row'>
-                    <MyContext.Provider value={{ orders, setOrders, idOrders, setIdOrders}}>
+                    <MyContext.Provider value={{ orders, setOrders, savedOrders, setSavedOrders}}>
                         <Routes>
                             <Route path='/' element = {
                                 <>

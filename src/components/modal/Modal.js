@@ -7,12 +7,13 @@ function Modal() {
     const {orders, setOrders} = useContext(MyContext);
 
     const close = (e) => {
+        e.preventDefault();
         e.target.closest(".modal").classList.remove("show");
         document.querySelector(".overlay").classList.remove("show");
     }
     const getTotalPrice = () =>{
-        let price2 = orders.reduce((curret,next) => curret+next.count*next.price, 0)
-        return price2
+        let price = orders.reduce((curret,next) => curret+next.count*next.price, 0)
+        return price
     }
     return (
         <div className="modal" data-modal="">
@@ -32,7 +33,7 @@ function Modal() {
             <h4 className='center'>Total price {getTotalPrice()}$</h4>
             <div className='modal_bottom'>
                 
-                <a type="button" onClick={close} className="btn btn-dark">Cancel</a>
+                <a type="button" onClick={close} href="#" className="btn btn-dark">Cancel</a>
                 <Link to="/checkout" type="button" className="btn btn-primary">Continue</Link>
                 
             </div>

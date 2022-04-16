@@ -1,5 +1,5 @@
 
-import ProductWidget from "./ProductWidget";
+import ProductWidget from "./productWidget/ProductWidget";
 
 
 function Sidebar() {
