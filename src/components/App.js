@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { products } from './products';
 import Content from './content/Content';
 import Sidebar from './sidebar/Sidebar';
@@ -20,13 +20,13 @@ function App() {
 
     const [orders, setOrders] = useState([...initOrders]);
     const [savedOrders, setSavedOrders] = useState([]);
-
+    const [modal, setModal] = useState(false);
     return (
         <BrowserRouter>
             <section className='order'>
                 <div className='container'>
                     <div className='row'>
-                    <MyContext.Provider value={{ orders, setOrders, savedOrders, setSavedOrders}}>
+                    <MyContext.Provider value={{ orders, setOrders, savedOrders, setSavedOrders, modal, setModal}}>
                         <Routes>
                             <Route path='/' element = {
                                 <>

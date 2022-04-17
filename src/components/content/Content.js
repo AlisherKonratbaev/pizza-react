@@ -1,8 +1,8 @@
-import React, {useState, useContext } from 'react';
+import React, {useContext } from 'react';
 import { MyContext } from '../MyContext';
 
 function Content() {
-    const {orders, setOrders} = useContext(MyContext);
+    const {orders} = useContext(MyContext);
     
     return (
         <div className='col-md-8'>

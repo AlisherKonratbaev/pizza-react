@@ -1,14 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { MyContext } from '../../MyContext';
 import randomChar from '../../randomChar';
 
 export default function WidgetBottom(props) {
-    const { orders, setOrders, savedOrders, setSavedOrders } = useContext(MyContext);
+    const { orders, setOrders, savedOrders, setSavedOrders, setModal } = useContext(MyContext);
     const [code, setCode] = useState("");
-
+    const ref = useRef(null)
     const openModal = () => {
-        document.querySelector(".modal").classList.add("show");
-        document.querySelector(".overlay").classList.add("show");
+        setModal(true);
     }
 
     const resetOrders = () => {
@@ -32,8 +31,8 @@ export default function WidgetBottom(props) {
         }
         savedOrders.push(tempObj);
         setSavedOrders([...savedOrders]);
-      
-        document.querySelector('.product_code').textContent = `Your pizza configuration has been saved.Your number is ${tempObj.code}`
+
+        ref.current.textContent = `Your pizza configuration has been saved.Your number is ${tempObj.code}`
     }
 
     const loadPizza = (e) => {
@@ -43,14 +42,13 @@ export default function WidgetBottom(props) {
         if (!findOrders) return
 
         resetOrders();
-        for(let i = 0; i < orders.length; i++) {
-            for(let k = 0; k < findOrders.products.length; k++) {
-                if(orders[i].id === findOrders.products[k].product_id) {
-                    orders[i].count = findOrders.products[k].count
-                    break;
-                }
-            }
-        }
+
+        orders.forEach(order => {
+            findOrders.products.forEach(product => {
+                if(order.id === product.product_id) order.count = product.count;
+            })
+        })
+
         setOrders([...orders]);
     }
 
@@ -61,7 +59,7 @@ export default function WidgetBottom(props) {
             </div>
             <div className='widget__bottom'>
                 <button type="button" className="btn btn-success" onClick={savePizza}>Save pizza</button>
-                <button type="button" className="btn btn-primary" onClick={() => { openModal() }}>Chekout</button>
+                <button type="button" className="btn btn-primary" onClick={openModal}>Chekout</button>
             </div>
 
             <form onSubmit={loadPizza}>
@@ -70,7 +68,7 @@ export default function WidgetBottom(props) {
                     <button type="submit" className="btn btn-dark">Load pizza</button>
                 </div>
             </form>
-            <p className='product_code'></p>
+            <p ref={ref} className='product_code'></p>
         </>
     )
 }

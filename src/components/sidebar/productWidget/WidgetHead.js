@@ -4,7 +4,7 @@ import { MyContext } from '../../MyContext';
 
 
 export default function WidgetHead(props) {
-    const { orders, setOrders, savedOrders, setSavedOrders } = useContext(MyContext);
+    const { orders, setOrders} = useContext(MyContext);
 
     const resetOrders = () => {
         orders.forEach(order => {
@@ -17,7 +17,7 @@ export default function WidgetHead(props) {
         <div className="widget__head">
             <h4>{props.title}</h4>
             <span className="total_price">{props.totalPrice}$</span>
-            <button onClick={() => { resetOrders() }}>Reset All</button>
+            <button onClick={resetOrders}>Reset All</button>
         </div>
     )
 } 

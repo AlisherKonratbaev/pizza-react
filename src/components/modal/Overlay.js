@@ -1,12 +1,14 @@
-
+import {useContext } from 'react';
+import { MyContext } from '../MyContext';
 
 function Overlay() {
+    const {modal ,setModal} = useContext(MyContext);
+
     const close = (e) => {
-        e.target.classList.remove("show");
-        document.querySelector(".modal").classList.remove("show");
+        setModal(false);
     }
     return (
-        <div onClick={close} className="overlay"></div>
+        <div onClick={close} className= {`overlay ${modal? "show":"hide"}`}></div>
     )
 }
 

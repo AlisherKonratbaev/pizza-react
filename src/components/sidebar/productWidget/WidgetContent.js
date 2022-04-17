@@ -1,11 +1,11 @@
 
 
-import React, { useContext,useEffect } from 'react';
+import React, { useContext } from 'react';
 import { MyContext } from '../../MyContext';
 
 
 export default function WidgetContent() {
-    const { orders, setOrders, savedOrders, setSavedOrders } = useContext(MyContext);
+    const { orders, setOrders} = useContext(MyContext);
 
     const creatPorduct = (product) => {
         orders.forEach(order => {
@@ -25,9 +25,7 @@ export default function WidgetContent() {
       
         setOrders([...orders]);
     }
-    // useEffect(() => {
-    //     console.log(orders);
-    // })
+  
     return (
         <div className="widget__content">
                 {orders.map((product, index) => {
