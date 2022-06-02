@@ -1,10 +1,10 @@
-# Shop
+# Pizza-React
 
 ## Description
 React web application, pizza orders, react-hooks (useState, useEffect and others)
 
 ## Demo
-123
+https://pizza-react-eight.vercel.app/
 
 ## Technologies used
 React, React-Router-Dom, react-hooks, Javascript, html, css
